@@ -1,0 +1,52 @@
+# Gradle 관련 파일들
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+# IDE 관련 파일들
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Java 컴파일된 파일들
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# 로그 파일들
+*.log
+logs/
+
+# OS 관련 파일들
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 임시 파일들
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Docker 관련
+docker-compose.override.yml
+
+# IntelliJ IDEA 워크스페이스
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/dictionaries
+.idea/shelf
