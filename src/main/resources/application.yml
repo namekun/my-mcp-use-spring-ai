@@ -3,19 +3,33 @@
 # NOTE: You must disable the banner and the console logging 
 # to allow the STDIO transport to work !!!
 spring:
-  main:
-    banner-mode: off
   ai:
-    mcp:
-      server:
-        name: my-mcp-server
-        version: 0.0.1
-        stdio: true
+    provider: ollama
+    # Ollama 설정 (Spring AI 자동 구성 활성화)
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: gemma3:12b-it-qat
+        connect-timeout: 99999999999
+        read-timeout: 99999999999
+        write-timeout: 99999999999
+          
+# OpenAI API 사용하려면 위 설정들을 주석처리하고 아래 주석을 해제하세요
+# provider: openai
+# openai:
+#   base-url: https://api.openai.com
+#   api-key: your-actual-openai-api-key-here
+#   chat:
+#     options:
+#       model: gpt-4o-mini
+#       temperature: 0.3
 
-# logging:
-#   pattern:
-#     console:
-
+# Spring Boot 자동 구성 디버깅
 logging:
+  level:
+    org.springframework.ai: DEBUG
+    org.springframework.boot.autoconfigure: DEBUG
+    org.springframework.boot.autoconfigure.condition: TRACE  # 조건 평가 상세 로그
   file:
     name: ./model-context-protocol/weather/starter-webmvc-server/target/starter-webmvc-server.log
