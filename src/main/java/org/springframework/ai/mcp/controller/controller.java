@@ -1,6 +1,5 @@
 package org.springframework.ai.mcp.controller;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.mcp.service.LLMCommitMessageService;
 import org.springframework.http.ResponseEntity;
