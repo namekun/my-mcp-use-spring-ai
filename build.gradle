@@ -16,27 +16,6 @@ java {
 
 repositories {
     mavenCentral()
-    maven {
-        name = 'Spring Milestones'
-        url = 'https://repo.spring.io/milestone'
-        mavenContent {
-            snapshotsOnly()
-        }
-    }
-    maven {
-        name = 'Spring Snapshots'
-        url = 'https://repo.spring.io/snapshot'
-        mavenContent {
-            snapshotsOnly()
-        }
-    }
-    maven {
-        name = 'Central Portal Snapshots'
-        url = 'https://central.sonatype.com/repository/maven-snapshots/'
-        mavenContent {
-            snapshotsOnly()
-        }
-    }
 }
 
 dependencyManagement {
@@ -52,12 +31,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'  // Ollama 자동 구성에 필요
 
     // Lombok (컴파일 시에만 필요)
-    compileOnly 'org.projectlombok:lombok:1.18.34'
-    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 
     // 테스트 소스용 Lombok
-    testCompileOnly 'org.projectlombok:lombok:1.18.34'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

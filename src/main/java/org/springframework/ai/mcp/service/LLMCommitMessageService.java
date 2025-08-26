@@ -345,24 +345,6 @@ public class LLMCommitMessageService {
         throw last;
     }
 
-    private String diagnose(Exception e) {
-        Throwable root = rootCause(e);
-        if (root instanceof ConnectException) {
-            return "원인 추정: 서버에 연결할 수 없습니다(연결 거부). " +
-                    "서버 기동 및 포트(11434) 확인, 동일 머신에서 /api/tags 호출 확인을 권장합니다.";
-        } else if (root instanceof SocketTimeoutException) {
-            return "원인 추정: 서버 응답 지연(타임아웃). " +
-                    "모델 콜드 로딩/서버 부하 가능성이 있으니 타임아웃 상향 또는 재시도를 적용하세요.";
-        } else if (root instanceof UnknownHostException) {
-            return "원인 추정: 호스트 해석 실패. base-url 호스트명이 올바른지 확인하세요.";
-        }
-        String msg = root != null ? String.valueOf(root.getMessage()) : "";
-        if (msg.contains("not found")) {
-            return "원인 추정: 요청한 모델이 서버에 없습니다. 서버에 모델을 준비하거나 존재하는 모델명으로 변경하세요.";
-        }
-        return "추가 확인: 서버/애플리케이션 로그를 확인해 상세 원인을 파악하세요.";
-    }
-
     private String summarize(Exception e) {
         Throwable root = rootCause(e);
         return (root != null ? root.getClass().getSimpleName() + ": " + root.getMessage() : e.toString());
